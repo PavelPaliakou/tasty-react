@@ -1,16 +1,21 @@
 import { Badge } from "@/components/ui/badge";
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
+import { useEffect, useState } from "react";
 
 export default function HomePage() {
+    const [recipes, setRecipes] = useState([]);
 
-    const recipies = [
-        {
-            id: 1,
-            name: "Chicken",
-            cuisine: "Asian",
-            rating: 4.5
+    useEffect(() => {
+        const getRecipes = async () => {
+            const res = await fetch("https://www.dummyjson.com/recipes");
+            const data = await res.json();
+            if (data) {
+                setRecipes(data.recipes);
+            }
         }
-    ]
+
+        getRecipes();
+    }, []);
 
     const cuisines: Array<string> = [
         "All",
