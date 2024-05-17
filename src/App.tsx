@@ -1,5 +1,4 @@
 import { Route, Routes } from 'react-router-dom'
-import './App.css'
 import { Button } from './components/ui/button'
 import HomePage from './pages/home-page'
 import RecipePage from './pages/recipe-page'
