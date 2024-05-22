@@ -7,11 +7,9 @@ export default function RecipePage() {
   const [recipe, setRecipe] = useState<RecipeType>();
 
   useEffect(() => {
-    async function getRecipeById(){
+    async function getRecipe() {
       if (recipeId) {
-        const response = await fetch(
-          `https://dummyjson.com/recipes/${recipeId}`
-        );
+        const response = await fetch(`https://dummyjson.com/recipes/${recipeId}`);
         const recipe = await response.json();
 
         if (recipe) {
@@ -20,7 +18,7 @@ export default function RecipePage() {
       }
     }
 
-    getRecipeById();
+    getRecipe();
   }, [recipeId]);
 
   if (!recipe) {
@@ -82,8 +80,8 @@ export default function RecipePage() {
         <div className="xl:px-12">
           <h2 className="uppercase text-5xl my-12">Ingredients</h2>
           <div className="flex flex-col divide-y divide-orange-800">
-            {recipe.ingredients.map((ingredient: string, idx: number) => (
-              <div className="py-2" key={`${ingredient}-${idx}`}>
+            {recipe.ingredients.map((ingredient: string, index: number) => (
+              <div className="py-2" key={`${ingredient}-${index}`}>
                 <p className="text-2xl">{ingredient}</p>
               </div>
             ))}
@@ -92,8 +90,8 @@ export default function RecipePage() {
         <div className="xl:px-12">
           <h2 className="uppercase text-5xl my-12">Instructions</h2>
           <div className="flex flex-col">
-            {recipe.instructions.map((ingredient: string, idx: number) => (
-              <ul className="py-2 list-disc" key={`${ingredient}-${idx}`}>
+            {recipe.instructions.map((ingredient: string, index: number) => (
+              <ul className="py-2 list-disc" key={`${ingredient}-${index}`}>
                 <li className="text-2xl">{ingredient}</li>
               </ul>
             ))}
